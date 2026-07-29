@@ -6,6 +6,7 @@ import * as z from 'zod';
 import { login } from '../../actions/auth';
 import { useState } from 'react';
 import Link from 'next/link';
+import { Eye, EyeOff } from 'lucide-react';
 
 const loginSchema = z.object({
   email: z.string().email('Invalid email address'),
@@ -16,6 +17,7 @@ type LoginFormValues = z.infer<typeof loginSchema>;
 
 export default function LoginPage() {
   const [error, setError] = useState<string | null>(null);
+  const [showPassword, setShowPassword] = useState(false);
   
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
@@ -34,11 +36,11 @@ export default function LoginPage() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-24 bg-slate-50">
-      <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md border border-slate-100">
+    <main className="flex min-h-screen flex-col items-center justify-center p-24 bg-slate-50 dark:bg-slate-950">
+      <div className="w-full max-w-md p-8 space-y-8 bg-white dark:bg-slate-900 rounded-lg shadow-md border border-slate-100 dark:border-slate-800">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-slate-800">Welcome Back</h1>
-          <p className="text-sm text-slate-500 mt-2">Log in to Legal-Tech Co-Counsel</p>
+          <h1 className="text-2xl font-bold text-slate-800 dark:text-slate-200">Welcome Back</h1>
+          <p className="text-sm text-slate-500 dark:text-slate-400 mt-2">Log in to Legal-Tech Co-Counsel</p>
         </div>
         
         {error && (
@@ -49,22 +51,34 @@ export default function LoginPage() {
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div>
-            <label className="block text-sm font-medium text-slate-700">Email</label>
+            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">Email</label>
             <input 
               {...register('email')}
               type="email"
-              className="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-black"
+              placeholder="Email address"
+              className="appearance-none rounded-t-lg relative block w-full px-4 py-3 border border-slate-300 dark:border-slate-700 placeholder-slate-400 text-slate-900 dark:text-slate-100 bg-white dark:bg-slate-900 rounded-t-md focus:outline-none focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-blue-500 focus:z-10 sm:text-sm"
             />
             {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>}
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-slate-700">Password</label>
-            <input 
-              {...register('password')}
-              type="password"
-              className="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-black"
-            />
+            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">Password</label>
+            <div className="relative">
+              <input 
+                {...register('password')}
+                type={showPassword ? 'text' : 'password'}
+                placeholder="Password"
+                className="appearance-none rounded-b-lg relative block w-full px-4 py-3 pr-10 border border-slate-300 dark:border-slate-700 placeholder-slate-400 text-slate-900 dark:text-slate-100 bg-white dark:bg-slate-900 rounded-b-md focus:outline-none focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-blue-500 focus:z-10 sm:text-sm"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-500 z-20"
+                tabIndex={-1}
+              >
+                {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+              </button>
+            </div>
             {errors.password && <p className="mt-1 text-sm text-red-600">{errors.password.message}</p>}
           </div>
 
@@ -78,7 +92,7 @@ export default function LoginPage() {
         </form>
 
         <div className="text-center text-sm">
-          <span className="text-slate-500">Don't have an account? </span>
+          <span className="text-slate-500 dark:text-slate-400">Don't have an account? </span>
           <Link href="/signup" className="font-medium text-indigo-600 hover:text-indigo-500">
             Sign up
           </Link>

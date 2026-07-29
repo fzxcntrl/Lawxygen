@@ -23,7 +23,7 @@ def load_index():
         logger.info("Loading vector index...")
         data = np.load(index_path, allow_pickle=True)
         embeddings = data["embeddings"]
-        chunks = json.loads(data["chunks"])
+        chunks = json.loads(str(data["chunks"]))
         index_data = {"embeddings": embeddings, "chunks": chunks}
         
         logger.info("Loading embedding model...")

@@ -70,13 +70,13 @@ export default function DraftPage() {
     <div className="animate-in fade-in duration-500">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         
-        <div className="bg-white p-6 md:p-8 rounded-xl shadow-sm border border-slate-200 h-fit">
+        <div className="bg-white dark:bg-slate-900 p-6 md:p-8 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 h-fit">
           <div className="flex items-center gap-3 mb-6">
             <div className="bg-blue-50 p-2.5 rounded-lg border border-blue-100">
               <FileText className="w-5 h-5 text-blue-700" />
             </div>
             <div>
-              <h2 className="text-2xl font-bold text-slate-900">Draft Legal Notice</h2>
+              <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100">Draft Legal Notice</h2>
             </div>
           </div>
           
@@ -88,39 +88,39 @@ export default function DraftPage() {
 
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
             <div>
-              <label className="block text-sm font-semibold text-slate-800 mb-1.5">Sender Details</label>
-              <input {...register('sender_details')} placeholder="Name, Address, Contact" className="block w-full px-4 py-2.5 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" />
+              <label className="block text-sm font-semibold text-slate-800 dark:text-slate-200 mb-1.5">Sender Details</label>
+              <input {...register('sender_details')} placeholder="Name, Address, Contact" className="block w-full px-4 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg text-sm text-slate-900 dark:text-slate-100 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-blue-500 outline-none transition-all" />
               {errors.sender_details && <p className="text-red-500 text-xs mt-1.5">{errors.sender_details.message}</p>}
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-slate-800 mb-1.5">Recipient Details</label>
-              <input {...register('recipient_details')} placeholder="Name, Address" className="block w-full px-4 py-2.5 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" />
+              <label className="block text-sm font-semibold text-slate-800 dark:text-slate-200 mb-1.5">Recipient Details</label>
+              <input {...register('recipient_details')} placeholder="Name, Address" className="block w-full px-4 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg text-sm text-slate-900 dark:text-slate-100 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-blue-500 outline-none transition-all" />
               {errors.recipient_details && <p className="text-red-500 text-xs mt-1.5">{errors.recipient_details.message}</p>}
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-slate-800 mb-1.5">Subject</label>
-              <input {...register('subject')} placeholder="e.g. Legal Notice for Breach of Contract" className="block w-full px-4 py-2.5 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" />
+              <label className="block text-sm font-semibold text-slate-800 dark:text-slate-200 mb-1.5">Subject</label>
+              <input {...register('subject')} placeholder="e.g. Legal Notice for Breach of Contract" className="block w-full px-4 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg text-sm text-slate-900 dark:text-slate-100 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-blue-500 outline-none transition-all" />
               {errors.subject && <p className="text-red-500 text-xs mt-1.5">{errors.subject.message}</p>}
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-slate-800 mb-1.5">Facts of the Matter</label>
-              <textarea {...register('facts')} rows={5} placeholder="Describe what happened..." className="block w-full px-4 py-2.5 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all resize-none" />
+              <label className="block text-sm font-semibold text-slate-800 dark:text-slate-200 mb-1.5">Facts of the Matter</label>
+              <textarea {...register('facts')} rows={5} placeholder="Describe what happened..." className="block w-full px-4 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg text-sm text-slate-900 dark:text-slate-100 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-blue-500 outline-none transition-all resize-none" />
               {errors.facts && <p className="text-red-500 text-xs mt-1.5">{errors.facts.message}</p>}
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               <div>
-                <label className="block text-sm font-semibold text-slate-800 mb-1.5">Relief Sought</label>
-                <input {...register('relief_sought')} placeholder="e.g. Payment of Rs. 100,000" className="block w-full px-4 py-2.5 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" />
+                <label className="block text-sm font-semibold text-slate-800 dark:text-slate-200 mb-1.5">Relief Sought</label>
+                <input {...register('relief_sought')} placeholder="e.g. Payment of Rs. 100,000" className="block w-full px-4 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg text-sm text-slate-900 dark:text-slate-100 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-blue-500 outline-none transition-all" />
                 {errors.relief_sought && <p className="text-red-500 text-xs mt-1.5">{errors.relief_sought.message}</p>}
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-slate-800 mb-1.5">Deadline to Respond</label>
-                <input {...register('deadline')} placeholder="e.g. 15 days" className="block w-full px-4 py-2.5 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" />
+                <label className="block text-sm font-semibold text-slate-800 dark:text-slate-200 mb-1.5">Deadline to Respond</label>
+                <input {...register('deadline')} placeholder="e.g. 15 days" className="block w-full px-4 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg text-sm text-slate-900 dark:text-slate-100 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-blue-500 outline-none transition-all" />
                 {errors.deadline && <p className="text-red-500 text-xs mt-1.5">{errors.deadline.message}</p>}
               </div>
             </div>
@@ -143,12 +143,12 @@ export default function DraftPage() {
           </form>
         </div>
 
-        <div className="bg-white p-6 md:p-8 rounded-xl shadow-sm border border-slate-200 flex flex-col h-[850px]">
-          <div className="flex justify-between items-center mb-6 pb-4 border-b border-slate-100">
-            <h2 className="text-xl font-bold text-slate-800">Generated Draft</h2>
+        <div className="bg-white dark:bg-slate-900 p-6 md:p-8 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 flex flex-col h-[850px]">
+          <div className="flex justify-between items-center mb-6 pb-4 border-b border-slate-100 dark:border-slate-800">
+            <h2 className="text-xl font-bold text-slate-800 dark:text-slate-200">Generated Draft</h2>
             {draft && (
               <div className="flex gap-2">
-                <button onClick={copyToClipboard} className="flex items-center text-xs font-semibold px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-md transition-colors">
+                <button onClick={copyToClipboard} className="flex items-center text-xs font-semibold px-3 py-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-slate-700 dark:text-slate-300 rounded-md transition-colors">
                   <Copy className="w-3.5 h-3.5 mr-1.5" /> {isCopied ? 'Copied!' : 'Copy'}
                 </button>
                 <button onClick={downloadTxt} className="flex items-center text-xs font-semibold px-3 py-2 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-md transition-colors border border-blue-100">
@@ -158,15 +158,15 @@ export default function DraftPage() {
             )}
           </div>
 
-          <div className="flex-1 overflow-y-auto bg-slate-50 p-6 rounded-lg border border-slate-200 shadow-inner">
+          <div className="flex-1 overflow-y-auto bg-slate-50 dark:bg-slate-950 p-6 rounded-lg border border-slate-200 dark:border-slate-700 shadow-inner">
             {draft ? (
-              <pre className="whitespace-pre-wrap font-serif text-sm text-slate-800 leading-relaxed">
+              <pre className="whitespace-pre-wrap font-serif text-sm text-slate-800 dark:text-slate-200 leading-relaxed">
                 {draft}
               </pre>
             ) : (
               <div className="h-full flex flex-col items-center justify-center text-slate-400">
                 <FileText className="w-12 h-12 text-slate-300 mb-3" />
-                <p className="text-sm font-medium text-slate-500">Your draft will appear here.</p>
+                <p className="text-sm font-medium text-slate-500 dark:text-slate-400">Your draft will appear here.</p>
                 <p className="text-xs mt-1">Fill out the form and generate to begin.</p>
               </div>
             )}

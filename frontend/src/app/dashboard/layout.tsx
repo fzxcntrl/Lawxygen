@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { logout } from '../actions/auth';
 import { Scale, LogOut, FileText, Search, LayoutDashboard } from 'lucide-react';
+import { ThemeToggle } from '@/components/theme-toggle';
 
 export default function DashboardLayout({
   children,
@@ -8,7 +9,7 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex flex-col transition-colors">
       {/* Top Navigation Bar */}
       <header className="bg-slate-900 text-white shadow-md sticky top-0 z-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -39,7 +40,8 @@ export default function DashboardLayout({
             </nav>
 
             {/* User Actions */}
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 md:gap-4">
+              <ThemeToggle />
               <form action={logout}>
                 <button 
                   type="submit" 

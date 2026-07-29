@@ -33,14 +33,14 @@ export default function ResearchPage() {
 
   return (
     <div className="animate-in fade-in duration-500 w-full max-w-4xl mx-auto">
-      <div className="bg-white p-6 md:p-8 rounded-xl shadow-sm border border-slate-200">
+      <div className="bg-white dark:bg-slate-900 p-6 md:p-8 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
         <div className="flex items-center gap-3 mb-6">
-          <div className="bg-slate-100 p-2.5 rounded-lg border border-slate-200">
-            <Scale className="w-5 h-5 text-slate-800" />
+          <div className="bg-slate-100 dark:bg-slate-800 p-2.5 rounded-lg border border-slate-200 dark:border-slate-700">
+            <Scale className="w-5 h-5 text-slate-800 dark:text-slate-200" />
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-slate-900">Legal Research</h2>
-            <p className="text-sm text-slate-500 mt-1">Semantic search across Contract Act & Supreme Court Judgments</p>
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100">Legal Research</h2>
+            <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">Semantic search across Contract Act & Supreme Court Judgments</p>
           </div>
         </div>
         
@@ -51,8 +51,8 @@ export default function ResearchPage() {
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Ask a legal question... (e.g., Can earnest money be forfeited?)"
-              className="w-full pl-11 pr-4 py-3 border border-slate-300 rounded-lg shadow-sm focus:ring-2 focus:ring-slate-800 focus:border-slate-800 outline-none transition-all text-slate-900"
+              placeholder="e.g. Is a verbal contract binding?"
+              className="w-full pl-11 pr-4 py-3 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg shadow-sm focus:ring-2 focus:ring-slate-800 focus:border-slate-800 outline-none transition-all text-slate-900 dark:text-slate-100"
             />
           </div>
           <button
@@ -80,30 +80,30 @@ export default function ResearchPage() {
 
         <div className="mt-8 space-y-4">
           {hasSearched && !isSearching && results.length === 0 && !error && (
-            <div className="text-center py-12 border-2 border-dashed border-slate-200 rounded-xl bg-slate-50/50">
+            <div className="text-center py-12 border-2 border-dashed border-slate-200 dark:border-slate-700 rounded-xl bg-slate-50 dark:bg-slate-950/50">
               <Search className="w-10 h-10 text-slate-300 mx-auto mb-3" />
-              <p className="text-slate-700 font-medium">No relevant documents found.</p>
-              <p className="text-sm text-slate-500 mt-1">Try phrasing your question differently.</p>
+              <p className="text-slate-700 dark:text-slate-300 font-medium">No relevant documents found.</p>
+              <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">Try phrasing your question differently.</p>
             </div>
           )}
 
           {results.map((result, idx) => (
-            <div key={idx} className="border border-slate-200 rounded-xl p-5 hover:border-slate-300 hover:shadow-sm transition-all bg-white">
+            <div key={idx} className="border border-slate-200 dark:border-slate-700 rounded-xl p-5 hover:border-slate-300 dark:border-slate-700 hover:shadow-sm transition-all bg-white dark:bg-slate-900">
               <div className="flex justify-between items-start mb-3 gap-4">
-                <h3 className="font-bold text-lg text-slate-900 leading-snug">{result.title}</h3>
+                <h3 className="font-bold text-lg text-slate-900 dark:text-slate-100 leading-snug">{result.title}</h3>
                 <span className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold bg-green-50 text-green-700 border border-green-100 shrink-0">
                   {(result.score * 100).toFixed(1)}% Match
                 </span>
               </div>
               
-              <div className="bg-slate-50 p-4 rounded-lg border border-slate-100 mb-4">
-                <p className="text-sm text-slate-700 leading-relaxed font-serif">
-                  "...{result.chunk_text}..."
+              <div className="bg-slate-50 dark:bg-slate-950 p-4 rounded-lg border border-slate-100 dark:border-slate-800 mb-4">
+                <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-serif">
+                  "...{result.chunk_text.replace(/<[^>]*>?/gm, '')}..."
                 </p>
               </div>
               
               <div className="flex items-center justify-between pt-3">
-                <span className="text-xs font-mono font-medium text-slate-500 bg-slate-100 px-2 py-1 rounded border border-slate-200">
+                <span className="text-xs font-mono font-medium text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded border border-slate-200 dark:border-slate-700">
                   ID: {result.doc_id}
                 </span>
                 <a 

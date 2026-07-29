@@ -12,3 +12,4 @@ venv.bak/
 database.db
 vector_index.npz
 .DS_Store
+uvicorn.log

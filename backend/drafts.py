@@ -19,7 +19,7 @@ except Exception as e:
     groq_client = None
     logger.error(f"Failed to initialize Groq client: {e}")
 
-GROQ_MODEL = os.getenv("GROQ_MODEL", "llama3-70b-8192")
+GROQ_MODEL = os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile")
 
 @router.post("/generate", response_model=DraftRead)
 def generate_draft(

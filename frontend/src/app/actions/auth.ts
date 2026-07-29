@@ -82,6 +82,12 @@ export async function signup(formData: FormData) {
 }
 
 export async function logout() {
-  cookies().delete('token');
+  cookies().set('token', '', { 
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax',
+    path: '/',
+    maxAge: 0 
+  });
   redirect('/login');
 }
