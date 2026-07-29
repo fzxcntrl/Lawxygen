@@ -1,12 +1,17 @@
 import os
 from sqlmodel import create_engine, Session
 
-# SQLite config
 sqlite_file_name = "database.db"
-sqlite_url = os.getenv("DATABASE_URL", f"sqlite:///{sqlite_file_name}")
+db_url = os.getenv("DATABASE_URL", f"sqlite:///{sqlite_file_name}")
 
-# check_same_thread=False is needed for FastAPI+SQLite
-engine = create_engine(sqlite_url, echo=True, connect_args={"check_same_thread": False})
+# Render uses 'postgres://', but SQLAlchemy requires 'postgresql://'
+if db_url.startswith("postgres://"):
+    db_url = db_url.replace("postgres://", "postgresql://", 1)
+
+# check_same_thread is only valid for SQLite
+connect_args = {"check_same_thread": False} if db_url.startswith("sqlite") else {}
+
+engine = create_engine(db_url, echo=True, connect_args=connect_args)
 
 def get_session():
     with Session(engine) as session:
